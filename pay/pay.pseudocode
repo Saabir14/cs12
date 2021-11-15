@@ -1,0 +1,44 @@
+PROCEDURE Main
+    CONSTANT h = get_int("Hours Worked: ")
+    CONSTANT r = get_float("Pay per Hour: ")
+ 
+    CONSTANT p = get_pay(h, r)
+
+    OUTPUT "Total pay is ", p
+
+
+
+FUNCTION get_float(prompt : STRING) RETURNS INTEGER
+    OUTPUT prompt
+    DECLARE x : REAL
+    INPUT x
+    RETURN x
+
+
+
+FUNCTION get_float(prompt : STRING) RETURNS REAL
+    OUTPUT prompt
+    DECLARE x : REAL
+    INPUT x
+    RETURN x
+
+
+
+FUNCTION get_pay(h : INTEGER, r : INTEGER) RETURNS REAL
+    IF h > 40 THEN
+        RETURN get_advancedpay(h, r)
+    ELSE
+        RETURN get_basicpay(h, r)
+    ENDIF
+
+
+
+FUNCTION get_basicpay(h : INTEGER, r : INTEGER) RETURNS REAL
+    RETURN h * r
+
+FUNCTION get_advancedpay(h : INTEGER, r : INTEGER) RETURNS REAL
+    RETURN get_basicpay(h : INTEGER, r : INTEGER) * 1.5
+
+
+
+call Main
