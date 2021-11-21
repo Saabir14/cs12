@@ -1,0 +1,31 @@
+FUNCTION range(n : INTEGER) RETURNS ARRAY
+    DECLARE array : ARRAY[1:n+1]
+    FOR i <-- 1 TO n+1
+        array[i] <-- i-1
+    NEXT i
+    RETURN array
+ENDFUNCTION
+
+FUNCTION get_int(dialog : STRING) RETURNS INTEGER
+    DECLARE x : INTEGER
+    OUTPUT dialog
+    INPUT x
+    RETURN x
+ENDFUNCTION
+
+FUNCTION lenearsearche(array : ARRAY OF INT, target : INTEGER) RETURNS INTEGER
+    FOR i <-- 1 TO LENGTH(array) 
+        if array[i] = target THEN
+            return i
+        ENDIF
+    NEXT i
+    RETURN -1
+ENDFUNCTION
+
+
+CONSTANT x = lenearsearche(range(get_int("Array size: ")), get_int("Number to searche: "))
+IF x = -1 THEN
+    OUTPUT "Target not Found"
+ELSE
+    OUTPUT "Target Fount at Index:", x
+ENDIF

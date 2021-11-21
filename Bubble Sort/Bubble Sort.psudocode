@@ -1,0 +1,14 @@
+FUNCTION range(n : INTEGER) RETURNS ARRAY
+    DECLARE array : ARRAY[1:n+1]
+    FOR i <-- 1 TO n+1
+        array[i] <-- i-1
+    NEXT i
+    RETURN array
+ENDFUNCTION
+
+FUNCTION get_int(dialog : STRING) RETURNS INTEGER
+    DECLARE x : INTEGER
+    OUTPUT dialog
+    INPUT x
+    RETURN x
+ENDFUNCTION

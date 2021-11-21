@@ -5,7 +5,7 @@ def get_int(dialog):
     except: return get_int(dialog)
 
 def insertionsort(array):
-    if len(array) == 1: return array
+    if len(array) <= 1: return
     for i in range(1, len(array)):
         if array[i - 1] > array[i]:
             # Find Position and switche

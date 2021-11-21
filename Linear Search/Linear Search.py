@@ -9,6 +9,7 @@ def lenearsearche(array, target):
         if array[i] == target: return i
     return -1
 
+
 x = lenearsearche(range(get_int('Array size: ')), get_int('Number to searche: '))
 if x == -1:
     print('Target not Found')
