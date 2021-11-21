@@ -16,7 +16,7 @@ def index(array):
         array[i] = (i, array[i])
     return array
 
-def mergesearch(array, target):
+def binerysearch(array, target):
     if len(array) == 0: return -1
     if type(array[0]) != tuple: array = index(array)
 
@@ -25,9 +25,13 @@ def mergesearch(array, target):
         else: return -1
 
     for i in split(array, 2):
-        if mergesearch(i, target) != -1: return mergesearch(i, target)
+        if binerysearch(i, target) != -1: return binerysearch(i, target)
 
     return -1
 
 
-print(mergesearch(range(get_int('Array size: ')), get_int('Number to searche: ')))
+x = binerysearch(range(get_int('Array size: ')), get_int('Number to searche: '))
+if x == -1:
+    print('Target not Found')
+else:
+    print('Target Fount at Index:', x)
