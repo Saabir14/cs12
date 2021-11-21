@@ -16,9 +16,18 @@ def index(array):
         array[i] = (i, array[i])
     return array
 
-def mergesearch(array, target, efficiency=2):     # Efficiency can be incresed but is 2 by default
-    if not type(array[0]) == tuple: array = index(array)
-    print(array)
+def mergesearch(array, target):
+    if len(array) == 0: return -1
+    if type(array[0]) != tuple: array = index(array)
+
+    if len(array) == 1:
+        if array[0][1] == target: return array[0][0]
+        else: return -1
+
+    for i in split(array, 2):
+        if mergesearch(i, target) != -1: return mergesearch(i, target)
+
+    return -1
 
 
 print(mergesearch(range(get_int('Array size: ')), get_int('Number to searche: ')))
