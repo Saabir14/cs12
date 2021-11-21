@@ -1,0 +1,2 @@
+DECLARE array : ARRAY[1:10] OF INT
+FOR i <-- 0 TO len(ARRAY) STEP 1
