@@ -14,7 +14,7 @@ FUNCTION get_int(dialog : STRING) RETURNS INTEGER
 ENDFUNCTION
 
 FUNCTION lenearsearche(array : ARRAY OF INT, target : INTEGER) RETURNS INTEGER
-    FOR i <-- 1 TO LENGTH(array) 
+    FOR i <-- 1 TO LENGTH(array) + 1
         if array[i] = target THEN
             return i
         ENDIF

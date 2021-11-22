@@ -9,7 +9,7 @@ def bubblesort(array):
     for i in range(1, len(array)):
         if array[i - 1] > array[i]:
             array[i], array[i - 1] = array[i - 1], array[i]
-            array = bubblesort(array)
+            bubblesort(array)
             break
 
 

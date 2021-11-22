@@ -16,7 +16,7 @@ def index(array):
         array[i] = (i, array[i])
     return array
 
-def binerysearch(array, target):
+def binarysearch(array, target):
     if len(array) == 0: return -1
     if type(array[0]) != tuple: array = index(array)
 
@@ -25,12 +25,12 @@ def binerysearch(array, target):
         else: return -1
 
     for i in split(array, 2):
-        if binerysearch(i, target) != -1: return binerysearch(i, target)
+        if binarysearch(i, target) != -1: return binarysearch(i, target)
 
     return -1
 
 
-x = binerysearch(range(get_int('Array size: ')), get_int('Number to searche: '))
+x = binarysearch(range(get_int('Array size: ')), get_int('Number to searche: '))
 if x == -1:
     print('Target not Found')
 else:

@@ -13,8 +13,29 @@ FUNCTION get_int(dialog : STRING) RETURNS INTEGER
     RETURN x
 ENDFUNCTION
 
+PROCEDURE swap(x : INTEGER, y : INTEGER)
+    CONSTANT tmp <-- x
+    x <-- y
+    y <-- tmp
+ENDPROCEDURE
+
 PROCEDURE bubblesort(array : ARRAY)
-    IF LENGTH(array) > 1 THEN
-        FOR i <-- 1 TO 
+    IF LENGTH(array) > 2 THEN
+        FOR i <-- 2 TO LENGTH(array) + 1
+            IF array[i - 1] > array[i] THEN
+                CALL swap(array[i], array[i - 1])
+                CALL bubblesort(array)
+                BREAK
+            ENDIF
+        NEXT i
     ENDIF
 ENDPROCEDURE
+
+
+DECLARE array : ARRAY[1:get_int("Array size:")]
+FOR i <-- 1 TO LENGTH(array) + 1
+
+NEXT i
+
+CALL bubblesort(array)
+OUTPUT array
