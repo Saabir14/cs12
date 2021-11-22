@@ -12,3 +12,9 @@ FUNCTION get_int(dialog : STRING) RETURNS INTEGER
     INPUT x
     RETURN x
 ENDFUNCTION
+
+PROCEDURE bubblesort(array : ARRAY)
+    IF LENGTH(array) > 1 THEN
+        FOR i <-- 1 TO 
+    ENDIF
+ENDPROCEDURE
