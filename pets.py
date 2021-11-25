@@ -17,7 +17,4 @@ while True:
 
 with open('Customer.txt', 'w') as file:
     for i in array:
-        file.write(i[0])
-        file.write(', ')
-        file.write(i[1])
-        file.write('\n')
+        file.writelines(i[0] + ', ' + i[1])
