@@ -1,0 +1,21 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OPENFILE 'Customer.txt' FOR WRITE
+FOR i <-- 1 TO LENGTH(array)
+    WRITEFILE 'Customer.txt', array[i][1]
+    WRITEFILE 'Customer.txt', ' '
+    WRITEFILE 'Customer.txt', array[i][2]
+    WRITEFILE 'Customer.txt', '\n'
+CLOSEFILE 'Customer.txt'
