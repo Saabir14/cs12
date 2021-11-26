@@ -1,16 +1,51 @@
+FUNCTION get_string(prompt : STRING) RETURNS STRING
+    OUTPUT prompt
+    DECLARE x : STRING
+    INPUT x
+    RETURN x
+ENDFUNCTION
 
+FUNCTION get_int(prompt : STRING) RETURNS INTEGER
+    OUTPUT prompt
+    DECLARE x : INTEGER
+    INPUT x
+    RETURN x
+ENDFUNCTION
 
+FUNCTION get_num(prompt : STRING, max : INTEGER, min : INTEGER) RETURNS INTEGER
+    CONSTANT x = get_int(prompt)
+    IF x < min OR x > max THEN
+        RETURN get_num(prompt, max, min)
+    ENDIF
+    RETURN x
+ENDFUNCTION
 
+CONSTANT N = get_num("Maximum Owners: ", 100, 0)    // Get Max Array Size
+DECLARE array : ARRAY[1:N + 1] OF ARRAY[1:2] OF STRING
+array[1][1] <-- get_string("Owner Name: ")
+array[1][2] <-- get_string("Pet Type: ")
 
-
-
-
-
-
-
-
-
-
+DECLARE repeat : BOOLEAN
+repeat <-- TRUE
+DECLARE i : INTEGER
+i <-- 2
+WHILE repeat
+    CASE OF get_int("1.\tAdd another owner and pet\n2.\tChange/Amend an owner/pet\n3.\tAdd new owner and pet\n4.\tPrint the list of owners and pets\n5.\tBreak and save to file\n\nChoose: ")
+        1 : array[i][1] <-- get_string("Owner Name: ")
+            array[i][2] <-- get_string("Pet Type: ")
+            i <-- i + 1
+        2 : CONSTANT y = get_num("Index: ", LENGTH(array), 1)
+            array[y][1] <-- get_string("Owner NameL ")
+            array[y][1] <-- get_string("Pet Name: ")
+        3 : array[i][1] <-- get_string("Owner Name: ")
+            array[i][2] <-- get_string("Pet Type: ")
+            i <-- i + 1
+        4 : FOR j <-- 1 TO LENGTH(array)
+                OUTPUT array[j][1], ", ", array[j][2], '\n'     // New line (\n) counts as a char
+            ENDFOR
+        OTHERWISE : repeat <-- FALSE
+    ENDCASE
+ENDWHILE
 
 OPENFILE 'Customer.txt' FOR WRITE
 FOR i <-- 1 TO LENGTH(array)

@@ -13,7 +13,7 @@ while True:
     x = get_int('1.\tAdd another owner and pet\n2.\tChange/Amend an owner/pet\n3.\tAdd new owner and pet\n4.\tPrint the list of owners and pets\n5.\tBreak and save to file\n\nChoose: ')
     if x == 1: array.append([(input('Owner Name: ')), input('Pet Type: ')])
     elif x == 2:
-        y = get_num('Index: ', min=0, max=len(array) - 1)
+        y = get_num('Index: ', max=len(array) - 1)
         array[y] = [(input('Owner Name: ')), input('Pet Type: ')]
     elif x == 3: array.append([(input('Owner Name: ')), input('Pet Type: ')])
     elif x == 4: print(array)
